@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tecnologías Digitales en la Industria Alimentaria</title>
+    <link rel="shortcut icon" href="assets/icon.png" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -47,7 +49,7 @@
       </div>
     </nav>
 
-    <header class="text-center bg-dark text-white shadow shadow-lg py-5">
+    <header class="bg-dark text-white shadow shadow-lg py-5">
       <div class="container">
         <h1 class="display-4">
           Tecnologías Digitales en la Industria Alimentaria
@@ -59,89 +61,442 @@
       </div>
     </header>
 
-    <section class="container my-5" id="intro">
+    <section class="container-fluid my-5" id="intro">
       <div class="row">
         <div class="col-md-6">
-          <h2>Presentación General</h2>
-          <p>
-            La industria alimentaria está evolucionando gracias a las
-            tecnologías digitales...
+          <h2 class="mx-5">Introducción</h2>
+          <p class="mx-5 mt-3">
+            La industria alimentaria digitalizada busca adaptarse a las nuevas
+            demandas del mercado y a los avances tecnológicos, transformando la
+            forma en que los alimentos son producidos, distribuidos y
+            consumidos. Esto no solo mejora la eficiencia y la calidad, sino que
+            también ofrece una mayor transparencia y seguridad para los
+            consumidores. <br /><br />Las tecnologías de la nube en el sector
+            alimentario mejoran la gestión de datos, permiten una mejor
+            colaboración entre los actores de la cadena de suministro, ofrecen
+            mejoras sin grandes inversiones y garantizan una mayor trazabilidad
+            y seguridad de los productos. Esto optimiza la eficiencia y reduce
+            costos.
           </p>
+          <canvas id="digitalizationChart" height="auto" class="mt-3"></canvas>
         </div>
-        <div class="col-md-6 text-center">
+        <div
+          class="col-md-6 mt-md-0 mt-3 d-flex justify-content-center align-items-center"
+        >
+          <div class="d-flex justify-content-center align-items-center">
+            <img
+              src="assets/piramideGrande.jpg"
+              alt=""
+              class="img-fluid"
+              style="height: 40rem"
+            />
+          </div>
           <!-- <img src="intro-image.jpg" class="img-fluid rounded shadow" alt="Industria digitalizada"> -->
         </div>
       </div>
     </section>
 
     <section class="container-fluid bg-light py-5" id="cloud">
-      <div class="container">
-        <h2 class="text-center mb-4">Niveles de la Cloud/Nube</h2>
+      <div class="mx-5">
+        <h2 class="mb-4">Niveles de la Cloud/Nube</h2>
         <div class="row">
           <div class="col-md-4">
-            <h4>IaaS</h4>
+            <h4 class="mb-3">
+              IaaS: (Infrastructure as a Service - Infraestructura como
+              Servicio)
+            </h4>
+            <h6>💻 Definición</h6>
             <p>
-              Infraestructura como Servicio, permite gestionar servidores en la
-              nube...
+              Este nivel proporciona recursos informáticos básicos como
+              servidores, almacenamiento y redes a través de la nube. <br />
+              Las empresas no necesitan invertir en infraestructura física, ya
+              que alquilan estos servicios según sus necesidades.
             </p>
+            <h6>🍽 Ejemplos</h6>
+            <ul>
+              <li>
+                Almacenamiento y procesamiento de datos de ventas: <br />
+                Una cadena de restaurantes usa Amazon Web Services (AWS) o
+                Google Cloud para almacenar grandes volúmenes de datos sobre
+                ventas y clientes.
+              </li>
+              <li>
+                Un supermercado aloja su propio sistema de gestión de pedidos en
+                servidores en la nube en lugar de tener servidores físicos.
+              </li>
+            </ul>
           </div>
           <div class="col-md-4">
-            <h4>PaaS</h4>
+            <h4 class="mb-3">
+              PaaS (Platform as a Service - Plataforma como Servicio)
+            </h4>
+            <h6>⚙️ Definición</h6>
             <p>
-              Plataforma como Servicio, facilita el desarrollo de
-              aplicaciones...
+              Ofrece un entorno de desarrollo y ejecución en la nube con
+              herramientas para crear, probar y desplegar aplicaciones sin
+              preocuparse por la infraestructura subyacente.
             </p>
+            <h6>🍽 Ejemplos</h6>
+            <ul>
+              <li>
+                Desarrollo de aplicaciones para pedidos en línea: <br />
+                Un restaurante usa Google App Engine o Microsoft Azure para
+                crear una aplicación móvil de pedidos sin gestionar los
+                servidores.
+              </li>
+              <li>
+                Análisis de datos en tiempo real: <br />
+                Una empresa de distribución alimentaria usa IBM Cloud o Heroku
+                para desarrollar modelos de inteligencia artificial que
+                optimicen la logística de entrega.
+              </li>
+            </ul>
           </div>
           <div class="col-md-4">
-            <h4>SaaS</h4>
+            <h4 class="mb-3">
+              SaaS (Software as a Service - Software como Servicio)
+            </h4>
+            <h6>📊 Definición</h6>
             <p>
-              Software como Servicio, aplicaciones accesibles desde cualquier
-              dispositivo...
+              Proporciona software listo para usar a través de la nube, sin
+              necesidad de instalación ni mantenimiento por parte del usuario.
             </p>
+            <h6>🍽 Ejemplos</h6>
+            <ul>
+              <li>
+                Gestión de inventarios y pedidos: <br />
+                Un restaurante usa SAP, Oracle NetSuite o Zoho Inventory para
+                controlar el stock de ingredientes y prever compras. <br />
+              </li>
+              <li>
+                Sistemas de punto de venta (POS): <br />
+                Un café usa Square o Toast POS para procesar pagos, gestionar
+                pedidos y realizar seguimiento de las ventas en la nube.
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <img
+          src="assets/piramide.jpg"
+          alt=""
+          class="img-fluid"
+          style="height: 30rem"
+        />
+      </div>
     </section>
 
-    <section class="container my-5" id="edge">
-      <h2 class="text-center">Edge Computing</h2>
-      <p class="text-center">
-        Procesamiento de datos más cercano a su origen para mejorar la
-        velocidad...
+    <section class="container-fluid my-5" id="edge">
+      <h2 class="mx-5">Edge Computing</h2>
+      <p class="mx-5">
+        El edge computing es una tecnología que procesa los datos lo más cerca
+        posible del lugar donde se generan. Esto significa que, en lugar de
+        enviar toda la información a la nube para ser procesada, se realiza un
+        preprocesamiento local en dispositivos como sensores o máquinas
+        inteligentes. Esto reduce la latencia, mejora la eficiencia y permite
+        respuestas en tiempo real. <br /><br />
+        ¿Cómo complementa a la nube?
+      </p>
+      <ul class="mx-5">
+        <li>
+          La nube se encarga de almacenar y analizar grandes cantidades de
+          datos, mientras que el edge se utiliza para tareas inmediatas que
+          requieren respuesta en tiempo real.
+        </li>
+        <li>
+          Juntas, estas tecnologías crean un ecosistema híbrido donde los datos
+          críticos se procesan en el edge y los datos masivos se almacenan o
+          analizan en la nube.
+        </li>
+      </ul>
+      <p class="mx-5">
+        Por ejemplo: <br />
+        En la agricultura inteligente, los sensores en cultivos recopilan datos
+        sobre humedad, temperatura y nutrientes del suelo. En lugar de enviar
+        todos los datos a la nube, los dispositivos en el edge procesan la
+        información localmente y toman decisiones en tiempo real, como activar
+        el riego o ajustar la fertilización. <br /><br />
+        En la industria alimentaria y manufacturera, los sensores IoT y drones
+        con Edge Computing se usan para:
+      </p>
+      <ul class="mx-5">
+        <li>
+          <strong>Control de calidad:</strong> Cámaras y sensores detectan
+          defectos en productos en tiempo real.
+        </li>
+        <li>
+          <strong>Mantenimiento predictivo:</strong> Sensores en maquinaria
+          detectan vibraciones anómalas y previenen fallas.
+        </li>
+        <li>
+          <strong>Optimización de la cadena de producción:</strong>
+          Procesamiento de datos inmediato para ajustar velocidad y eficiencia.
+        </li>
+      </ul>
+      <p class="mx-5">
+        Edge Computing mejora la eficiencia en sectores como la agricultura y la
+        industria, permitiendo respuestas rápidas y optimización de recursos.
+        Junto con la nube, crea un modelo híbrido que equilibra almacenamiento
+        centralizado con procesamiento en el punto donde se generan los datos.
+        🚀
       </p>
     </section>
 
     <section class="container-fluid bg-light py-5" id="fog">
-      <h2 class="text-center">Fog y Mist Computing</h2>
-      <p class="text-center">
-        Tecnologías que permiten una mayor descentralización del procesamiento
-        de datos...
+      <h2 class="mx-5">Fog y Mist Computing</h2>
+      <p class="mx-5">
+        Fog Computing y Mist Computing son extensiones del Edge Computing, pero
+        con diferentes niveles de procesamiento y ubicación dentro de la red:
+        <br /><br />
       </p>
+
+      <div class="container">
+        <h2 class="text-center mb-3">
+          Comparación entre Fog Computing y Mist Computing
+        </h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered table-hover">
+            <thead class="table-dark">
+              <tr>
+                <th>Característica</th>
+                <th>Fog Computing</th>
+                <th>Mist Computing</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Ubicación</strong></td>
+                <td>
+                  Procesamiento en dispositivos intermedios (routers, gateways,
+                  servidores locales).
+                </td>
+                <td>
+                  Procesamiento en dispositivos finales (sensores,
+                  microcontroladores).
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Capacidad de Cómputo</strong></td>
+                <td>
+                  Alta: Puede manejar análisis complejos y coordinar múltiples
+                  dispositivos.
+                </td>
+                <td>Baja: Realiza operaciones simples en tiempo real.</td>
+              </tr>
+              <tr>
+                <td><strong>Latencia</strong></td>
+                <td>Baja, pero depende de la conexión con los dispositivos.</td>
+                <td>
+                  Ultrabaja, ya que el procesamiento ocurre directamente en el
+                  sensor.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Dependencia de la Nube</strong></td>
+                <td>
+                  Reduce la carga en la nube, pero aún puede interactuar con
+                  ella.
+                </td>
+                <td>
+                  Puede funcionar de forma autónoma sin necesidad de la nube.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="mx-5 mt-4">
+        <h5>Zonas de Aplicación</h5>
+        <p>
+          ✅ Fog Computing → Coordinación de plantas industriales <br /><br />Se
+          usa en fábricas, redes inteligentes y sistemas autónomos para procesar
+          datos localmente antes de enviarlos a la nube. <br />Ejemplo:
+          Supervisión de líneas de producción, donde múltiples sensores envían
+          datos a un servidor local que optimiza la producción en tiempo real.
+          <br /><br />
+          ✅ Mist Computing → Dispositivos pequeños y sensores inteligentes
+          <br /><br />Se emplea en IoT de bajo consumo, como sensores agrícolas,
+          dispositivos médicos o domótica. <br />Ejemplo: Sensores de humedad en
+          cultivos que ajustan el riego sin necesidad de enviar datos a un
+          servidor intermedio.
+        </p>
+        <h5>Trazabilidad de Alimentos con Fog Computing y Blockchain</h5>
+        <p>
+          En la industria alimentaria Fog Computing combinado con Blockchain
+          permite un registro seguro y en tiempo real de la trazabilidad de los
+          productos. <br /><br />Cómo funciona:
+        </p>
+        <ul>
+          <li>
+            Sensores IoT en granjas, camiones de transporte y supermercados
+            capturan datos sobre temperatura, ubicación y calidad.
+          </li>
+          <li>
+            Nodos Fog Computing en cada etapa (planta de procesamiento, centro
+            de distribución) validan y procesan la información antes de enviarla
+            a la blockchain.
+          </li>
+          <li>
+            Blockchain registra cada transacción, asegurando transparencia y
+            evitando fraudes en la cadena de suministro.
+          </li>
+        </ul>
+        <p>
+          Ejemplo real: <br />Una empresa de productos lácteos usa Fog Computing
+          para verificar que la leche se mantuvo a la temperatura correcta
+          durante el transporte. Si un sensor detecta un cambio crítico, el nodo
+          fog puede alertar a los distribuidores y registrar el evento en la
+          blockchain, asegurando que los consumidores finales tengan acceso a
+          información confiable sobre el producto. <br /><br />Fog y Mist
+          Computing optimizan el procesamiento en el Internet de las Cosas (IoT)
+          dependiendo de la complejidad del análisis y la cercanía al
+          dispositivo. Mientras Fog Computing es ideal para coordinar sistemas
+          industriales y logísticos, Mist Computing es perfecto para respuestas
+          inmediatas en dispositivos pequeños. 🚀
+        </p>
+      </div>
     </section>
 
-    <section id="ventajas" class="container my-5">
-      <h2 class="text-center">Ventajas y Desafíos</h2>
-      <p class="text-center">
-        Estas tecnologías permiten reducción de costos, optimización de
-        recursos...
-      </p>
+    <section id="ventajas" class="container-fluid my-5">
+      <h2 class="mx-5">Ventajas y Desafíos</h2>
+      <h5 class="mx-5">Ventajas</h5>
+      <ol class="mx-5">
+        <li>
+          <h6>Cloud Computing (Computación en la Nube)</h6>
+          <ul>
+            <li>
+              Reducción de costos: Disminuye la inversión en infraestructura y
+              mantenimiento de servidores.
+            </li>
+            <li>
+              Optimización de recursos: Permite almacenar grandes volúmenes de
+              datos y acceder a ellos en tiempo real.
+            </li>
+            <li>
+              Sostenibilidad: Reduce el consumo energético al centralizar
+              recursos en centros de datos eficientes.
+            </li>
+          </ul>
+        </li>
+        <br />
+        <li>
+          <h6>Edge Computing (Computación en el Borde)</h6>
+          <ul>
+            <li>
+              Reducción de costos: Minimiza el uso de ancho de banda al procesar
+              datos localmente.
+            </li>
+            <li>
+              Optimización de recursos: Aumenta la velocidad de procesamiento,
+              útil para monitoreo en tiempo real de máquinas.
+            </li>
+            <li>
+              Sostenibilidad: Reduce el tráfico de datos a la nube, disminuyendo
+              el consumo de energía.
+            </li>
+          </ul>
+        </li>
+        <br />
+        <li>
+          <h6>Fog Computing (Computación en la Niebla)</h6>
+          <ul>
+            <li>
+              Reducción de costos: Permite distribuir la carga de trabajo entre
+              dispositivos cercanos, evitando costosas conexiones a la nube.
+            </li>
+            <li>
+              Optimización de recursos: Ideal para entornos con múltiples
+              sensores y dispositivos IoT en fábricas o almacenes.
+            </li>
+            <li>
+              Sostenibilidad: Disminuye la dependencia de grandes centros de
+              datos, reduciendo la huella de carbono.
+            </li>
+          </ul>
+        </li>
+        <br />
+        <li>
+          <h6>Mist Computing (Computación en la Neblina)</h6>
+          <ul>
+            <li>
+              Reducción de costos: Aprovecha dispositivos locales con capacidad
+              de cómputo (sensores inteligentes), reduciendo infraestructura
+              externa.
+            </li>
+            <li>
+              Optimización de recursos: Ideal para entornos con múltiples
+              sensores y dispositivos IoT en fábricas o almacenes.
+            </li>
+            <li>
+              Sostenibilidad: Favorece el procesamiento ultraeficiente, evitando
+              consumo energético innecesario.
+            </li>
+          </ul>
+        </li>
+        <br />
+      </ol>
+      <h5 class="mx-5">Desafíos</h5>
+      <ol class="mx-5">
+        <li>
+          <h6>Ciberseguridad</h6>
+          <ul>
+            <li>
+              Mayor vulnerabilidad a ataques cibernéticos debido a la
+              interconexión de múltiples dispositivos y redes.
+            </li>
+            <li>
+              Necesidad de implementar protocolos de seguridad robustos
+              (cifrado, autenticación, monitoreo).
+            </li>
+          </ul>
+        </li>
+        <br />
+        <li>
+          <h6>Capacitación y Adaptación</h6>
+          <ul>
+            <li>Falta de personal capacitado en estas tecnologías.</li>
+            <li>
+              Necesidad de entrenar a empleados para el manejo, mantenimiento y
+              seguridad de estos sistemas.
+            </li>
+          </ul>
+        </li>
+        <br />
+        <li>
+          <h6>Integración con Infraestructura Existente</h6>
+          <ul>
+            <li>
+              Dificultad en la interoperabilidad con sistemas tradicionales de
+              producción y logística.
+            </li>
+            <li>Costos iniciales de adopción tecnológica.</li>
+          </ul>
+        </li>
+      </ol>
     </section>
 
-    <section id="form" class="container-fluid py-4 bg-light text-center m-0">
-      <h2>Formulario de Evaluación</h2>
-      <p>
-        Completa nuestro cuestionario en Google Forms para evaluar este sitio...
+    <section id="form" class="container-fluid py-4 bg-light m-0">
+      <h2 class="mx-5">Formulario de Evaluación</h2>
+      <p class="mx-5">
+        ¡Completa el cuestionario en Google Forms para evaluar esta web! 🚀 ✨
       </p>
       <a
         href="https://docs.google.com/forms/d/e/1FAIpQLSf7uuw_ngTZlRfPYfTu_36e_sHkP8lw5I3HKEl1jMdbeycnqA/viewform?usp=dialog"
-        class="btn btn-primary"
+        class="btn btn-primary mx-5 mb-3"
         target="_blank"
         >Ir al formulario</a
       >
     </section>
 
     <footer class="bg-dark text-white text-center py-4">
-      <p>&copy; 2025 Tech Food - Todos los derechos reservados.</p>
+      <p>
+        &copy; 2025 Tech Food - María Abril Fernández - 1º PyC - Todos los
+        derechos reservados.
+      </p>
     </footer>
+    <!-- Script de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="grafico.js"></script>
   </body>
 </html>
