@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h2 {
+    font-size: 2.75rem;
+    font-weight: bolder;
+}
+
+h3 {
+    font-size: 1.75rem;
+    font-weight: bolder;
+}
+
+.piramide_intro {
+    height: 40rem;
+}
+
+.piramide_abajo {
+    height: 30rem;
+}
+
+@media screen and (max-width: 768px) {
+    .piramide_intro {
+        height: 22rem;
+    }
+
+    .piramide_abajo {
+        height: 20rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .piramide_intro {
+        height: 20rem;
+    }
+
+    .piramide_abajo {
+        height: 15rem;
+    }
+}
